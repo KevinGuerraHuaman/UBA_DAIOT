@@ -1,0 +1,49 @@
+# Variables de entorno
+.env
+.env.local
+.env.*.local
+
+# Certificados AWS IoT - NUNCA SUBIR
+backend/certs/*.pem
+backend/certs/*.crt
+backend/certs/*.key
+backend/certs/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+dist/
+build/
+
+# Entornos virtuales
+venv/
+env/
+ENV/
+venvi_ubaDAIOT/
+.venv/
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+
+# Logs
+*.log
+logs/
+
+# Database
+*.db
+*.sqlite3
+
+# OS
+Thumbs.db
+.DS_Store
+
+# Render
+.render/
