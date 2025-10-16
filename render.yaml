@@ -1,0 +1,70 @@
+services:
+  # ==========================================
+  # Servicio Web - Dashboard Dash
+  # ==========================================
+  - type: web
+    name: mpu6050-dashboard
+    env: python
+    region: oregon
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn frontend.app:server --bind 0.0.0.0:$PORT
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.0
+      - key: TIMESCALE_HOST
+        sync: false
+      - key: TIMESCALE_PORT
+        value: 39406
+      - key: TIMESCALE_DB
+        value: tsdb
+      - key: TIMESCALE_USER
+        sync: false
+      - key: TIMESCALE_PASSWORD
+        sync: false
+      - key: DASH_DEBUG
+        value: False
+      - key: LOG_LEVEL
+        value: INFO
+    healthCheckPath: /
+
+  # ==========================================
+  # Servicio Worker - Backend MQTT Receiver
+  # ==========================================
+  - type: worker
+    name: mpu6050-receiver
+    env: python
+    region: oregon
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: python -m backend.main
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.0
+      - key: AWS_IOT_ENDPOINT
+        sync: false
+      - key: AWS_IOT_PORT
+        value: 8883
+      - key: AWS_IOT_CLIENT_ID
+        value: Python_Receiver
+      - key: AWS_IOT_TOPIC
+        value: esp32/mpu6050/data
+      - key: TIMESCALE_HOST
+        sync: false
+      - key: TIMESCALE_PORT
+        value: 39406
+      - key: TIMESCALE_DB
+        value: tsdb
+      - key: TIMESCALE_USER
+        sync: false
+      - key: TIMESCALE_PASSWORD
+        sync: false
+      - key: LOG_LEVEL
+        value: INFO
+      # Certificados como variables de entorno (contenido completo)
+      - key: AWS_ROOT_CA_CONTENT
+        sync: false
+      - key: AWS_CERTIFICATE_CONTENT
+        sync: false
+      - key: AWS_PRIVATE_KEY_CONTENT
+        sync: false
