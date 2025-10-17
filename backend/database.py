@@ -4,7 +4,7 @@ Gestión de base de datos TimescaleDB
 import psycopg2
 from psycopg2.extras import execute_batch
 import logging
-from backend.config import (
+from config import (
     TIMESCALE_HOST, TIMESCALE_PORT, TIMESCALE_DB,
     TIMESCALE_USER, TIMESCALE_PASSWORD
 )
