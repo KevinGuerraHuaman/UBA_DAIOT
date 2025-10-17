@@ -2,9 +2,9 @@
 Receptor principal de datos AWS IoT con TimescaleDB
 """
 import logging
-from backend.config import LOG_LEVEL, LOG_FORMAT
-from backend.database import DatabaseManager
-from backend.mqtt_handler import MQTTHandler
+from config import LOG_LEVEL, LOG_FORMAT
+from database import DatabaseManager
+from mqtt_handler import MQTTHandler
 
 logging.basicConfig(level=LOG_LEVEL, format=LOG_FORMAT)
 logger = logging.getLogger(__name__)
