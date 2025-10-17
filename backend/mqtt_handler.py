@@ -9,7 +9,7 @@ import shutil
 from datetime import datetime
 from awscrt import mqtt
 from awsiot import mqtt_connection_builder
-from backend.config import (
+from config import (
     AWS_IOT_ENDPOINT, AWS_IOT_PORT, AWS_IOT_CLIENT_ID,
     AWS_IOT_TOPIC, AWS_ROOT_CA, AWS_CERTIFICATE, AWS_PRIVATE_KEY,
     AWS_ROOT_CA_CONTENT, AWS_CERTIFICATE_CONTENT, AWS_PRIVATE_KEY_CONTENT
